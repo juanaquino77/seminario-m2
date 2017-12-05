@@ -62,8 +62,14 @@ class CustomerCredit
     {
         $isAvailable = parent::isAvailable($quote);
 
+        $limit = $this->_scopeConfig->getValue('payment/customer_credit/limit');
+        $total = $quote->getData('base_grand_total');
+
         //Si ya viene habilitado el método (verificando si está activo)
         if($isAvailable){
+          if ($total > $limit) {
+            return false;
+          }
             //Tomo el valor de si tiene habilitado el credito o no para saber si lo muestro
             $isAvailable = (bool) $this->customerSession->getCustomer()->getData('enable_customer_credit');
         }

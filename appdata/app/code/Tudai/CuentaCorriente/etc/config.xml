@@ -6,6 +6,7 @@
                 <active>1</active>
                 <model>Tudai\CuentaCorriente\Model\CustomerCredit</model>
                 <title>Cuenta Corriente</title>
+                <limit>1000</limit>
                 <group>tudai-payment</group>
             </customer_credit>
         </payment>
